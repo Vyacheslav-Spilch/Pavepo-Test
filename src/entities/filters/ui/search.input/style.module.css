@@ -1,0 +1,15 @@
+.container_input {
+    width: 40%;
+    position: relative;
+}
+
+.search_input {
+    width: 100%;
+    color: rgb(40, 38, 38);
+    font-size: 16px;
+    font-weight: 400;
+    padding: 7px 10px;
+    border: 1px solid rgb(2, 141, 255);
+    border-radius: 15px;
+    outline: none;
+}

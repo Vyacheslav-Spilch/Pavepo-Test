@@ -1,0 +1,26 @@
+.card_link {
+    display: block;
+    width: 45%;
+    text-decoration: none;
+}
+.card_box {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    width: 100%;
+    border: 1px solid rgb(2, 141, 255);
+    border-radius: 15px;
+    padding: 12px;
+}
+
+.card_box h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(2, 141, 255);
+}
+
+.card_box {
+    font-size: 17px;
+    font-weight: 300;
+    color: #3a3a3a;
+}
