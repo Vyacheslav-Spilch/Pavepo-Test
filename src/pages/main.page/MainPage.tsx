@@ -1,7 +1,6 @@
 import SearchPanel from '@/widgets/search.panel/SearchPanel';
-import s from './style.module.css';
+import s from './style.module.scss';
 import UsersList from '@/widgets/users.list/UsersList';
-// import { useScrollToTop } from '@/shared/hooks/useScrollToTop';
 
 const MainPage = () => {
   return (

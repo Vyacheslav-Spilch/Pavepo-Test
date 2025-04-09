@@ -1,4 +1,4 @@
-import '@/global.css';
+import './styles/index.scss';
 import { Layout } from './layout/layout';
 import { useScrollToTop } from '@/shared/hooks/useScrollToTop';
 

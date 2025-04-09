@@ -1,0 +1,21 @@
+@use "./reset.scss";
+@use "./variables";
+@use "./normalize.scss";
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--text-light);
+}
+
+.container {
+    position: relative;
+    margin: 0 auto;
+    min-height: 100vh;
+}

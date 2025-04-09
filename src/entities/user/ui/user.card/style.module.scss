@@ -1,0 +1,40 @@
+.card_link {
+    width: 45%;
+    display: block;
+    text-decoration: none;
+
+    .card_box {
+        width: 100%;
+        font-size: var(--text-md);
+        display: flex;
+        padding: 12px;
+        color: var(--text-dark);
+        flex-direction: column;
+        row-gap: 10px;
+        border: var(--border-sm) solid var(--main);
+        border-radius: var(--rounded-md);
+    
+        h3 {
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--main);
+        }
+    }
+}
+
+
+
+
+@media screen and (width <= 768px) {
+    .card_link {
+        width: 65%;
+    }
+}
+
+@media screen and (width <= 480px) {
+    .card_link {
+        width: 85%;
+    }
+}
+
+

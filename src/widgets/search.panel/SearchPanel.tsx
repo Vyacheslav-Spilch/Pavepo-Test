@@ -1,7 +1,8 @@
 import { SearchInput } from '@/entities/filters/ui/search.input/SearchInput';
-import s from './style.module.css';
+import s from './style.module.scss';
 import { DropDownFilter } from '@/entities/filters/ui/drop.down.filter/DropDownFilter';
 import { useOptionsFilter } from '@/entities/filters/hooks/useOptionsFilter';
+import { ResetFilters } from '@/entities/filters/ui/reset.filters/ResetFilters';
 
 const SearchPanel = () => {
   const { optionsFilterList } = useOptionsFilter();
@@ -17,6 +18,7 @@ const SearchPanel = () => {
           selectOptionsList={item.selectOptionsList}
         />
       ))}
+      <ResetFilters />
     </header>
   );
 };

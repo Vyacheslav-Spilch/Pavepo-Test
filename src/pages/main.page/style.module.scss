@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+}
+
+
+@media screen and (width <= 1024px) {
+    .container {
+        padding-top: 180px;
+    }
+}
+
+@media screen and (width <= 768px) {
+    .container {
+        padding-top: 200px;
+    }
+}
+
+@media screen and (width <= 480px) {
+    .container {
+        padding-top: 320px;
+    }
+}

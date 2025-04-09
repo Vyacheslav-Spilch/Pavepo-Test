@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Routers } from '../routers/routers';
 import NotFoundPage from '@/pages/not.found.page/NotFoundPage';
 import React, { Suspense } from 'react';
-import ContentLoader from '@/shared/ui/ContentLoader';
+import ContentLoader from '@/shared/ui/content.loader/ContentLoader';
 
 const LazyMainPage = React.lazy(() => import('@/pages/main.page/MainPage'));
 const LazyUserPage = React.lazy(() => import('@/pages/user.page/UserPage'));

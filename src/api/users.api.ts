@@ -2,10 +2,12 @@ import { UsersData } from '@/entities/user/types/types';
 import { setCityOptions, setEmailOptions } from '@/store/slices/slice.options.list';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+// Благодаря использованию RTK Query мы получаем возможность автоматически кэшировать данные,
+// что позволяет быстро иметь доступ к ним, через получения кэша
 export const usersApi = createApi({
   reducerPath: 'usersApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com' }),
-  // В будущем при добавлению функционала по мутации данных, с помощью метки "Users" можно будет инвалидировать их
+  // В будущем при добавлению функционала по мутации данных, с помощью метки - "Users", можно будет инвалидировать их
   tagTypes: ['Users'],
   endpoints: builder => ({
     getUsers: builder.query<UsersData[], void>({

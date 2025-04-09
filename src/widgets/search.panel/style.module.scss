@@ -1,0 +1,24 @@
+.container_search_panel {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    padding: 20px 40px;
+    position: fixed;
+    top: 0;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    background-color: var(--main-opacity);
+}
+
+@media screen and (width <= 768px) {
+    .container_search_panel {
+        justify-content: center;
+    }
+}
+
+@media screen and (width <= 480px) {
+    .container_search_panel {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

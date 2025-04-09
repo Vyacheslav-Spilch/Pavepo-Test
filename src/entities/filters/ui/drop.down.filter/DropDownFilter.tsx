@@ -1,4 +1,4 @@
-import s from '@/entities/filters/ui/style.module.css';
+import s from '@/entities/filters/ui/style.module.scss';
 import { useAppDispatch, useAppSelector } from '@/store/store';
 import React, { ChangeEvent } from 'react';
 import { FiltersType } from '../../types';
@@ -17,6 +17,7 @@ export const DropDownFilter = React.memo(({ label, selectOption, selectOptionsLi
         break;
       case 'Почта':
         dispatch(setEmailQuery(e.target.value));
+        break;
     }
   };
 

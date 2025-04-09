@@ -1,0 +1,15 @@
+.users_list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    min-width: 80%;
+    padding: 30px 40px;
+}
+
+
+@media screen and (width <= 768px) {
+    .users_list {
+        justify-content: center;
+    }
+}

@@ -3,8 +3,9 @@ import { Routers } from '@/app/routers/routers';
 import { skipToken } from '@reduxjs/toolkit/query';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import s from './style.module.css';
-import ContentLoader from '@/shared/ui/ContentLoader';
+import s from './style.module.scss';
+import ContentLoader from '@/shared/ui/content.loader/ContentLoader';
+import LinkNavigate from '@/shared/ui/link.navigate/LinkNavigate';
 
 const UserPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -22,10 +23,9 @@ const UserPage = () => {
     }
   }, [user, error, navigate]);
 
-  console.log(user);
-
   return (
     <section className={s.container}>
+      <LinkNavigate text="На главную" route={'MAIN'} iconName={'ArrowLeft'} />
       {isLoadingUser && <ContentLoader message="Загружаем информацию о пользователе..." variant="medium" />}
       {isSuccessLoadedUser && (
         <div className={s.box_info}>

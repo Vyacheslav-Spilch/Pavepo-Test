@@ -1,0 +1,28 @@
+.box_select {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    .select {
+        font-size: var(--text-sm);
+        font-weight: 400;
+        padding: 3px 10px;
+        color: var(--text-dark);
+        border-radius: var(--rounded-md);
+        min-width: 180px;
+    }
+
+    label {
+        font-size: var(--text-md);
+        font-weight: 600;
+        color: var(--text-light);
+    }
+}
+
+@media screen and (width <= 768px) {
+    .box_select {
+        .select {
+            min-width: 160px;
+        }
+    }
+}

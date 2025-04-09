@@ -19,15 +19,3 @@ export type UsersData<T = Record<string, unknown>> = {
     bs: string;
   };
 };
-
-export type IUser = {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  phone: string;
-  company: string;
-  city: string;
-};
-
-export type IUserCard = Pick<IUser, 'id' | 'name' | 'email' | 'city'>;

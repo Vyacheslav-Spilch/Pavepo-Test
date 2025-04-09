@@ -1,0 +1,24 @@
+.small {
+    font-size: var(--text-sm);
+}
+
+.medium {
+    font-size: var(--text-md);
+}
+
+.large {
+    font-size: var(--text-lg);
+}
+
+
+.primary {
+    color: var(--text-light);
+    background-color: var(--main);
+    border: var(--border-sm) solid var(--main); 
+}
+
+.secondary {
+    color: var(--main);
+    background-color: var(--bg-light);
+    border: none;
+}

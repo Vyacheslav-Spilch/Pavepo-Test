@@ -20,7 +20,7 @@ export const Spinner = ({ width, height }: Props) => {
           strokeDasharray="164.93361431346415 56.97787143782138"
           r="35"
           strokeWidth="10"
-          stroke="#028dff"
+          stroke="#0841bde9"
           fill="none"
           cy="50"
           cx="50"

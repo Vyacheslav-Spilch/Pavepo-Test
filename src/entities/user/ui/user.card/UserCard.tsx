@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import s from './style.module.css';
+import s from './style.module.scss';
 import { Routers } from '@/app/routers/routers';
 
 interface Props {
@@ -10,8 +10,6 @@ interface Props {
 }
 
 export const UserCard = ({ id, name, email, city }: Props) => {
-  console.log(id);
-
   return (
     <Link className={s.card_link} to={`${Routers.USER}/${id}`}>
       <div className={s.card_box}>
