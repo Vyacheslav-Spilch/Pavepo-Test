@@ -31,13 +31,11 @@ export const UsersList = React.memo(() => {
   return (
     <section className={s.users_list}>
       {isLoadingUsers && <ContentLoader message="Загрузка пользователей..." variant="large" />}
-      {isSuccessLoadedUsers ? (
+      {isSuccessLoadedUsers &&
         filteredUsers.map(user => (
           <UserCard key={user.id} id={user.id} name={user.name} email={user.email} city={user.address.city} />
-        ))
-      ) : (
-        <div>Пользователи не найдены</div>
-      )}
+        ))}
+      {filteredUsers?.length === 0 && <div>Пользователи не найдены</div>}
     </section>
   );
 });
