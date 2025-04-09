@@ -8,6 +8,7 @@
 
 .box_info {
     width: 50%;
+    height: auto;
     display: flex;
     flex-direction: column;
     border: var(--border-sm) solid var(--main);
@@ -25,7 +26,6 @@
     }
 
     header {
-        height: 50px;
         padding: 10px;
         text-align: center;
         background-color: var(--main);
@@ -34,6 +34,40 @@
             font-size: var(--text-xl);
             font-weight: 500;
             color: var(--text-light);
+        }
+    }
+}
+
+
+@media screen and (width <= 768px) {
+    .box_info {
+        width: 70%;
+
+        ul {
+            font-size: var(--text-md);
+        }
+        header {
+            padding: 10px 5px;
+    
+            span {
+                font-size: var(--text-lg);
+            }
+        }
+    }
+
+}
+
+@media screen and (width <= 480px) {
+    .box_info {
+        width: 90%;
+
+        ul {
+            font-size: var(--text-sm);
+        }
+        header {
+            span {
+                font-size: var(--text-md);
+            }
         }
     }
 }

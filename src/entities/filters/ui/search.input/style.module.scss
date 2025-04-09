@@ -18,3 +18,9 @@
         width: 85%;
     }
 }
+
+@media screen and (width <= 480px) {
+    .container_input {
+        width: 95%;
+    }
+}
