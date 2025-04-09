@@ -18,26 +18,31 @@ export const UsersList = React.memo(() => {
   // в случаи если массив зависимостей не изменился
 
   const filteredUsers = useMemo(() => {
-    return users?.filter(user => {
-      const cityMatch = selectCity === 'Все' || user.address.city === selectCity;
-      const nameMatch = selectName === '' || user.name.toLowerCase().includes(selectName.toLowerCase());
-      const emailMatch = selectEmail === 'Все' || user.email === selectEmail;
-      return nameMatch && cityMatch && emailMatch;
-    });
+    return users
+      ? users.filter(user => {
+          const cityMatch = selectCity === 'Все' || user.address.city === selectCity;
+          const nameMatch = selectName === '' || user.name.toLowerCase().includes(selectName.toLowerCase());
+          const emailMatch = selectEmail === 'Все' || user.email === selectEmail;
+          return nameMatch && cityMatch && emailMatch;
+        })
+      : [];
   }, [users, selectCity, selectName, selectEmail]);
 
-  const isSuccessLoadedUsers = filteredUsers?.length && isSuccess;
+  const isSuccessLoadedUsers: boolean = !!filteredUsers.length && isSuccess;
 
-  console.log(isSuccessLoadedUsers);
+  if (isLoadingUsers) {
+    return <ContentLoader message="Загрузка пользователей..." variant="large" />;
+  }
 
   return (
     <section className={s.users_list}>
-      {isLoadingUsers && <ContentLoader message="Загрузка пользователей..." variant="large" />}
-      {!!isSuccessLoadedUsers &&
+      {isSuccessLoadedUsers ? (
         filteredUsers.map(user => (
           <UserCard key={user.id} id={user.id} name={user.name} email={user.email} city={user.address.city} />
-        ))}
-      {!isSuccessLoadedUsers && <div>Пользователи не найдены</div>}
+        ))
+      ) : (
+        <div>Пользователи не найдены</div>
+      )}
     </section>
   );
 });
