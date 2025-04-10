@@ -18,17 +18,15 @@ export const UsersList = React.memo(() => {
   // в случаи если массив зависимостей не изменился
 
   const filteredUsers = useMemo(() => {
-    return users
-      ? users.filter(user => {
-          const cityMatch = selectCity === 'Все' || user.address.city === selectCity;
-          const nameMatch = selectName === '' || user.name.toLowerCase().includes(selectName.toLowerCase());
-          const emailMatch = selectEmail === 'Все' || user.email === selectEmail;
-          return nameMatch && cityMatch && emailMatch;
-        })
-      : [];
+    return users?.filter(user => {
+      const cityMatch = selectCity === 'Все' || user.address.city === selectCity;
+      const nameMatch = selectName === '' || user.name.toLowerCase().includes(selectName.toLowerCase());
+      const emailMatch = selectEmail === 'Все' || user.email === selectEmail;
+      return nameMatch && cityMatch && emailMatch;
+    });
   }, [users, selectCity, selectName, selectEmail]);
 
-  const isSuccessLoadedUsers: boolean = !!filteredUsers.length && isSuccess;
+  const isSuccessLoadedUsers = !!filteredUsers?.length && isSuccess;
 
   if (isLoadingUsers) {
     return <ContentLoader message="Загрузка пользователей..." variant="large" />;

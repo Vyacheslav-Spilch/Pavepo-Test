@@ -11,5 +11,7 @@
 @media screen and (width <= 768px) {
     .users_list {
         justify-content: center;
+        min-width: 90%;
+        padding: 30px 20px;
     }
 }
