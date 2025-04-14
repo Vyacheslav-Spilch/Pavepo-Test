@@ -2,14 +2,14 @@ import { UserCard } from '@/entities/user/ui/user.card/UserCard';
 import s from './style.module.scss';
 import React, { useMemo } from 'react';
 import { useAppSelector } from '@/store/store';
-import { selectCityQuery, selectEmailQuery, selectSearchQuery } from '@/store/selectors/selectors';
+import { selectCityQuery, selectEmailQuery, selectNameQuery } from '@/store/selectors/selectors';
 import { useGetUsersQuery } from '@/api/users.api';
 import ContentLoader from '@/shared/ui/content.loader/ContentLoader';
 
 export const UsersList = React.memo(() => {
   const { data: users, isLoading: isLoadingUsers, isSuccess } = useGetUsersQuery();
 
-  const selectName = useAppSelector(selectSearchQuery);
+  const selectName = useAppSelector(selectNameQuery);
   const selectCity = useAppSelector(selectCityQuery);
   const selectEmail = useAppSelector(selectEmailQuery);
 

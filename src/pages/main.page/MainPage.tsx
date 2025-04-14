@@ -3,6 +3,7 @@ import s from './style.module.scss';
 import UsersList from '@/widgets/users.list/UsersList';
 
 const MainPage = () => {
+
   return (
     <div className={s.container}>
       <SearchPanel />

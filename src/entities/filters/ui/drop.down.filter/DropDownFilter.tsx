@@ -1,22 +1,44 @@
 import s from '@/entities/filters/ui/style.module.scss';
 import { useAppDispatch, useAppSelector } from '@/store/store';
-import React, { ChangeEvent } from 'react';
-import { FiltersType } from '../../types';
+import React, { ChangeEvent, useEffect } from 'react';
+import { FiltersType, SearchParamKeys } from '../../types';
 import { setCityQuery, setEmailQuery } from '@/store/slices/slice.filters';
 
-export const DropDownFilter = React.memo(({ label, selectOption, selectOptionsList }: FiltersType) => {
+interface Props extends FiltersType {
+  updateSearchParam: (paramKey: SearchParamKeys, paramValue: string) => void;
+}
+
+export const DropDownFilter = React.memo(({ label, selectOption, selectOptionsList, updateSearchParam }: Props) => {
   const dispatch = useAppDispatch();
-  const selectOptionName = useAppSelector(selectOption);
+  const selectName = useAppSelector(selectOption);
   const optionsList = useAppSelector(selectOptionsList);
 
+  useEffect(() => {
+    // При монтировании компонента - синхронизируем значения из store с query параметрами url
+    switch (label) {
+      case 'Город': {
+        updateSearchParam('cityQuery', selectName);
+        break;
+      }
+      case 'Почта': {
+        updateSearchParam('emailQuery', selectName);
+        break;
+      }
+    }
+  }, []);
+
   const onHandleSelectedOption = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
     // В зависимости от установленого поля label для компоненты - делаем dispatch в нужного экшена
+    // Также добавляем значение фильтра SearchParam для url
     switch (label) {
       case 'Город':
-        dispatch(setCityQuery(e.target.value));
+        updateSearchParam('cityQuery', value);
+        dispatch(setCityQuery(value));
         break;
       case 'Почта':
-        dispatch(setEmailQuery(e.target.value));
+        updateSearchParam('emailQuery', value);
+        dispatch(setEmailQuery(value));
         break;
     }
   };
@@ -24,7 +46,7 @@ export const DropDownFilter = React.memo(({ label, selectOption, selectOptionsLi
   return (
     <div className={s.box_select}>
       <label>{label}: </label>
-      <select className={s.select} value={selectOptionName} onChange={onHandleSelectedOption}>
+      <select className={s.select} value={selectName} onChange={onHandleSelectedOption}>
         {optionsList.map(option => (
           <option key={option} value={option}>
             {option}

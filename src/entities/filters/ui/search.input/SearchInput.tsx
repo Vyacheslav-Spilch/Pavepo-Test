@@ -1,18 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import s from './style.module.scss';
 import { useDebounce } from '@/shared/hooks/useDebounce';
-import { setResetFilters, setSearchQuery } from '@/store/slices/slice.filters';
+import { setResetFilter, setSearchQuery } from '@/store/slices/slice.filters';
 import { useAppDispatch, useAppSelector } from '@/store/store';
-import { selectResetFilters, selectSearchQuery } from '@/store/selectors/selectors';
+import { selectNameQuery, selectResetFilters } from '@/store/selectors/selectors';
+import { useControlSearchParam } from '../../hooks/useControlSearchQueries';
+import { useInitialSearchParams } from '../../hooks/useInitialSearchParams';
 
 export const SearchInput = () => {
-  const dispatch = useAppDispatch();
-  const selectReset = useAppSelector(selectResetFilters);
-  const searchQuery = useAppSelector(selectSearchQuery);
-
   const firstRender = useRef(true);
 
-  const [searchValue, setSearchValue] = useState(searchQuery);
+  const dispatch = useAppDispatch();
+  const selectReset = useAppSelector(selectResetFilters);
+  const nameQuery = useAppSelector(selectNameQuery);
+  const { updateSearchParam } = useControlSearchParam();
+  const { inititalSearchParams } = useInitialSearchParams(firstRender.current);
+
+  const [searchValue, setSearchValue] = useState(nameQuery);
 
   const resultSearch = useDebounce(searchValue, 1000);
 
@@ -20,18 +24,23 @@ export const SearchInput = () => {
     // Проверяем, если selectReset в true, значит вызвана функция сброса фильтров,
     // поэтому сбрасываем локальное состояние, не дожидаясь выполнения useDebounce и затем переводит selectReset в false
     setSearchValue('');
-    dispatch(setResetFilters(false));
+    dispatch(setResetFilter(false));
   }
+
+  console.log('Render SearchInput');
 
   useEffect(() => {
     if (firstRender.current) {
+      setSearchValue(inititalSearchParams?.nameQuery || nameQuery);
       firstRender.current = false;
       return;
     }
     if (resultSearch) {
       dispatch(setSearchQuery(resultSearch));
+      updateSearchParam('nameQuery', resultSearch);
     } else {
       dispatch(setSearchQuery(''));
+      updateSearchParam('nameQuery', '');
     }
   }, [resultSearch, dispatch]);
 

@@ -9,13 +9,14 @@ interface Props {
   text: string;
   route: keyof typeof Routers;
   iconName: LucideIconsName;
+  queryParams?: string;
 }
 
-const LinkNavigate = ({ text, route, iconName }: Props) => {
+const LinkNavigate = ({ text, route, iconName, queryParams }: Props) => {
   const IconComponent = icons[iconName];
 
   return (
-    <Link className={s.link_box} to={Routers[route]}>
+    <Link className={s.link_box} to={`${Routers[route]}?${queryParams ? queryParams : ''}`}>
       <IconComponent size={20} className={s.link_icon} />
       {text}
     </Link>
